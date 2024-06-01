@@ -71,7 +71,7 @@ const CharactersDetails = ({ api }) => {
               {!episodesPerson
                 ? 'loading'
                 : episodesPerson.map((e) => (
-                    <Link key={e.id} to={`/characters-details/${e.id}`}>
+                    <Link key={e.id} to={`/characters/${e.id}`}>
                       <div className="card">
                         <img src={e.image} alt="img" />
                         <div className="card__info">

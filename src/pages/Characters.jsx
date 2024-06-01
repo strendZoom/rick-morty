@@ -41,7 +41,7 @@ const Characters = ({ api }) => {
                 <h1>Loading</h1>
               ) : (
                 characters.map((item) => (
-                  <Link key={item.id} to={`/characters-details/${item.id}`}>
+                  <Link key={item.id} to={`/characters/${item.id}`}>
                     <div className="card">
                       <img src={item.image} alt="img" />
                       <div className="card__info">

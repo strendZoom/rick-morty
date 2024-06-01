@@ -14,7 +14,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Characters api={api} />} />
-        <Route path="/characters-details/:id" element={<CharactersDetails api={api} />} />
+        <Route path="/characters/:id" element={<CharactersDetails api={api} />} />
         <Route path="/locations" element={<Locations api={api} />} />
         <Route path="/location/:id" element={<LocationDetails api={api} />} />
         <Route path="/episodes" element={<Episodes api={api} />} />

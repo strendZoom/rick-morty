@@ -144,33 +144,19 @@ header {
       }
     }
   }
+
   .search__filters {
-    display: none;
+    display: flex;
     justify-content: center;
     margin-bottom: 15px;
 
-    img {
+    .filters__block {
+      display: inline;
       position: relative;
-      left: 30px;
-    }
-    input {
-      padding: 15px 10px 15px 35px;
-      font-size: 16px;
-      border-radius: 10px;
-      border: 1px solid gray;
-      outline: none;
-      width: 240px;
-    }
-  }
-  @media (max-width: 1100px) {
-    .search__filters {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 15px;
-
-      img {
-        position: relative;
-        left: 30px;
+      svg {
+        position: absolute;
+        left: 10px;
+        top: 13px;
       }
       input {
         padding: 15px 10px 15px 35px;
@@ -183,37 +169,31 @@ header {
     }
   }
   .button__filters {
-    display: block;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
 
-    img {
+    .filters__block {
       position: relative;
-      left: 30px;
-      top: 2px;
-    }
-    input {
-      color: rgba(33, 150, 243, 1);
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 16px;
-      letter-spacing: 1.25px;
-      text-align: center;
-      height: 60px;
-      width: 70%;
-      box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
-      box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
-      background: rgba(227, 242, 253, 1);
-      border: none;
-    }
-    @media (max-width: 530px) {
-      img {
-        position: relative;
-        left: -130px;
-        top: 40px;
-        z-index: 1;
+      svg {
+        position: absolute;
+        left: 25px;
+        top: 23px;
       }
       input {
-        width: 100%;
+        border-radius: 5px;
+        color: rgba(33, 150, 243, 1);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 16px;
+        letter-spacing: 1.25px;
+        text-align: center;
+        height: 60px;
+        width: 280px;
+        box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
+        box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12);
+        background: rgba(227, 242, 253, 1);
+        border: none;
       }
     }
   }
