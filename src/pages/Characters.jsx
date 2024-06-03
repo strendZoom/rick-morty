@@ -18,6 +18,7 @@ const Characters = ({ api }) => {
   const [showModal, setShowModal] = useState(false);
   let [page, setPage] = useState(2);
   let [characters, setCharacters] = useState([]);
+
   useEffect(() => {
     axios
       .get(

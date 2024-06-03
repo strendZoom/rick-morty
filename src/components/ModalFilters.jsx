@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from '../assets/style/modalfilters.module.scss';
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 const ModalFilters = ({
@@ -11,21 +11,28 @@ const ModalFilters = ({
   filterSpecies,
   showModal,
 }) => {
-  const [filterSpeciesModal, setFilterSpeciesModal] = useState('');
-  const [filterGenderModal, setFilterGenderModal] = useState('');
-  const [filterStatusModal, setFilterStatusModal] = useState('');
+  const [filterSpeciesModal, setFilterSpeciesModal] = useState(filterSpecies);
+  const [filterGenderModal, setFilterGenderModal] = useState(filterGender);
+  const [filterStatusModal, setFilterStatusModal] = useState(filterStatus);
   const ApplyFilters = () => {
     setFilterGender(filterGenderModal);
     setFilterSpecies(filterSpeciesModal);
     setFilterStatus(filterStatusModal);
     setShowModal(false);
+    enableBodyScroll(document);
   };
+
+  const ScrollActivated = () => {
+    enableBodyScroll(document);
+    setShowModal(false);
+  };
+  disableBodyScroll(document);
   return (
     <>
-      <div onClick={() => setShowModal(false)} className={styles.background}></div>
+      <div onClick={() => ScrollActivated()} className={styles.background}></div>
       <div className={styles.modal}>
         <svg
-          onClick={() => setShowModal(false)}
+          onClick={() => ScrollActivated()}
           className={styles.closeIcon}
           width="14"
           height="14"
