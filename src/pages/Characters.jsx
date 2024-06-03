@@ -8,17 +8,27 @@ import axios from 'axios';
 
 import img from '../assets/image/rick&morty.svg';
 import BurgerMenu from '../components/BurgerMenu';
+import ModalFilters from '../components/ModalFilters';
 
 const Characters = ({ api }) => {
+  const [filterGender, setFilterGender] = useState('');
+  const [filterSpecies, setFilterSpecies] = useState('');
+  const [filterStatus, setFilterStatus] = useState('');
   const [inputNamePerson, setInputNamePerson] = useState('');
+  const [showModal, setShowModal] = useState(false);
   let [page, setPage] = useState(2);
   let [characters, setCharacters] = useState([]);
-
   useEffect(() => {
     axios
-      .get(`${api}/character?${!inputNamePerson ? '' : `name=${inputNamePerson}`}`)
+      .get(
+        `${api}/character?${!inputNamePerson ? '' : `name=${inputNamePerson}&`}${
+          filterGender == 'Gender' ? '' : `gender=${filterGender}&`
+        }${filterSpecies == 'Species' ? '' : `species=${filterSpecies}&`}${
+          filterStatus == 'Status' ? '' : `status=${filterStatus}&`
+        }`,
+      )
       .then((res) => setCharacters(res.data.results));
-  }, [inputNamePerson]);
+  }, [inputNamePerson, filterGender, filterSpecies, filterStatus]);
 
   const LoadPerson = () => {
     setPage(page + 1);
@@ -32,7 +42,28 @@ const Characters = ({ api }) => {
       <Header />
       <BurgerMenu />
       <Banner img={img} />
-      <Filters setInputNamePerson={setInputNamePerson} />
+      <Filters
+        setFilterGender={setFilterGender}
+        setFilterSpecies={setFilterSpecies}
+        setFilterStatus={setFilterStatus}
+        setInputNamePerson={setInputNamePerson}
+        setShowModal={setShowModal}
+      />
+      {!showModal ? (
+        ''
+      ) : (
+        <ModalFilters
+          setFilterGender={setFilterGender}
+          setFilterSpecies={setFilterSpecies}
+          setFilterStatus={setFilterStatus}
+          setInputNamePerson={setInputNamePerson}
+          setShowModal={setShowModal}
+          filterGender={filterGender}
+          filterStatus={filterStatus}
+          filterSpecies={filterSpecies}
+          showModal={showModal}
+        />
+      )}
       <main>
         <div className="container">
           <div className="main__cards">

@@ -1,5 +1,12 @@
+import { useState } from 'react';
 import searchIcon from '../assets/image/search-icon.svg';
-const Filters = ({ setInputNamePerson }) => {
+const Filters = ({
+  setFilterGender,
+  setFilterSpecies,
+  setFilterStatus,
+  setInputNamePerson,
+  setShowModal,
+}) => {
   return (
     <section className="section-filters">
       <div className="container">
@@ -13,23 +20,25 @@ const Filters = ({ setInputNamePerson }) => {
               type="text"
             />
           </div>
+
           <div className="filters-input">
-            <select name="species" id="">
-              <option defaultValue="gender">Species</option>
+            <select onChange={(e) => setFilterSpecies(e.target.value)} name="species" id="">
+              <option defaultValue="">Species</option>
               <option defaultValue="human">Human</option>
-              <option defaultValue="female">Female</option>
+              <option defaultValue="alien">Alien</option>
+              <option defaultValue="humanoid">Humanoid</option>
             </select>
           </div>
           <div className="filters-input">
-            <select name="gender" id="">
-              <option defaultValue="gender">Gender</option>
+            <select onChange={(e) => setFilterGender(e.target.value)} name="gender" id="">
+              <option defaultValue="">Gender</option>
               <option defaultValue="male">Male</option>
               <option defaultValue="female">Female</option>
             </select>
           </div>
           <div className="filters-input">
-            <select name="Status" id="">
-              <option defaultValue="Status">Status</option>
+            <select onChange={(e) => setFilterStatus(e.target.value)} name="Status" id="">
+              <option defaultValue="">Status</option>
               <option defaultValue="alive">Alive</option>
               <option defaultValue="dead">Dead</option>
               <option defaultValue="unknown">Unknown</option>
@@ -75,7 +84,11 @@ const Filters = ({ setInputNamePerson }) => {
               />
             </svg>
 
-            <input type="button" defaultValue="ADVANCED FILTERS" />
+            <input
+              onClick={() => setShowModal(true)}
+              type="button"
+              defaultValue="ADVANCED FILTERS"
+            />
           </div>
         </div>
       </div>
